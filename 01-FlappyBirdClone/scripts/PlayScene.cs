@@ -8,11 +8,17 @@ public partial class PlayScene : Node2D
 	{
 		World world = GetNode<World>("World");
 		world.GameOver += OnGameOver;
+		world.Scored += OnScored;
 	}
 
 	public void OnGameOver()
 	{
 		GetTree().CallDeferred("change_scene_to_file", "res://scenes/title_scene.tscn");
+	}
+
+	public void OnScored()
+	{
+		GD.Print("Scored!");
 	}
 
 

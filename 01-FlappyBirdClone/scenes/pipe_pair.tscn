@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://vm12vpurw6yq"]
+[gd_scene load_steps=6 format=3 uid="uid://vm12vpurw6yq"]
+
+[ext_resource type="Script" path="res://scripts/PipePair.cs" id="1_eusm2"]
+[ext_resource type="Texture2D" uid="uid://ch7aany50racm" path="res://assets/art/pipe.png" id="1_vtk1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0fgo"]
+size = Vector2(17, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfu11"]
+size = Vector2(20, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecev2"]
+size = Vector2(20, 400)
 
 [node name="PipePair" type="Node2D"]
+z_index = 1
+position = Vector2(0, 256)
+script = ExtResource("1_eusm2")
+
+[node name="Gap" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gap"]
+position = Vector2(27, -1)
+shape = SubResource("RectangleShape2D_n0fgo")
+
+[node name="Top" type="Area2D" parent="."]
+position = Vector2(0, -172)
+
+[node name="TopSprite" type="Sprite2D" parent="Top"]
+rotation = -3.14159
+texture = ExtResource("1_vtk1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource("RectangleShape2D_cfu11")
+
+[node name="Bot" type="Area2D" parent="."]
+position = Vector2(0, 228)
+
+[node name="BotSprite" type="Sprite2D" parent="Bot"]
+texture = ExtResource("1_vtk1w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bot"]
+shape = SubResource("RectangleShape2D_ecev2")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-20, -10, 46.71, 20)

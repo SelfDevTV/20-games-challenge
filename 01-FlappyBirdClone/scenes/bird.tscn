@@ -48,6 +48,7 @@ animations = [{
 radius = 5.0
 
 [node name="Bird" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 motion_mode = 1
 script = ExtResource("1_d83jm")
 
