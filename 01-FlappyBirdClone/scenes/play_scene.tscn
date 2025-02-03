@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0audnr54o48e"]
+
+[ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="1_187mi"]
+[ext_resource type="Script" path="res://scripts/PlayScene.cs" id="1_hiu8r"]
+[ext_resource type="PackedScene" uid="uid://e3spsarobop7" path="res://scenes/world.tscn" id="2_s6pdg"]
+
+[node name="PlayScene" type="Node2D"]
+script = ExtResource("1_hiu8r")
+
+[node name="World" parent="." instance=ExtResource("2_s6pdg")]
+
+[node name="Bird" parent="." instance=ExtResource("1_187mi")]
+position = Vector2(59, 263)

@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://e3spsarobop7"]
+
+[ext_resource type="Script" path="res://scripts/World.cs" id="1_cf50q"]
+[ext_resource type="Texture2D" uid="uid://ed2xkghkw22q" path="res://assets/art/floor.png" id="1_euw8k"]
+[ext_resource type="Texture2D" uid="uid://do5ed4eevnvqv" path="res://assets/art/clouds.png" id="1_x3ib8"]
+[ext_resource type="Texture2D" uid="uid://c2dmms22p7sxm" path="res://assets/art/hills.png" id="2_m0go0"]
+[ext_resource type="Texture2D" uid="uid://bb4hwglpkg244" path="res://assets/art/clouds-top.png" id="4_j1wso"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_utklu"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_cf50q")
+
+[node name="Clouds1" type="Parallax2D" parent="."]
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds1"]
+modulate = Color(1, 1, 1, 0.0588235)
+position = Vector2(0, 19)
+texture = ExtResource("4_j1wso")
+centered = false
+
+[node name="Clouds2" type="Parallax2D" parent="."]
+scroll_offset = Vector2(-66, 95)
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-30, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds2"]
+modulate = Color(1, 1, 1, 0.0588235)
+texture = ExtResource("4_j1wso")
+centered = false
+
+[node name="City" type="Parallax2D" parent="."]
+repeat_size = Vector2(500, 0)
+autoscroll = Vector2(-30, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="City"]
+position = Vector2(0, 325)
+texture = ExtResource("1_x3ib8")
+centered = false
+
+[node name="PointLight2D" type="PointLight2D" parent="City"]
+position = Vector2(230, 232)
+color = Color(1, 0.13, 0.13, 1)
+texture = ExtResource("1_x3ib8")
+
+[node name="Hills" type="Parallax2D" parent="."]
+scroll_offset = Vector2(0, 5)
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hills"]
+position = Vector2(0, 349)
+texture = ExtResource("2_m0go0")
+centered = false
+
+[node name="Floor" type="Parallax2D" parent="."]
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-100, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+modulate = Color(1, 1, 1, 0.514)
+offset_left = -1.0
+offset_top = 452.0
+offset_right = 287.0
+offset_bottom = 516.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(0, 445)
+texture = ExtResource("1_euw8k")
+centered = false
+
+[node name="HitArea" type="Area2D" parent="Floor"]
+unique_name_in_owner = true
+position = Vector2(0, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/HitArea"]
+shape = SubResource("WorldBoundaryShape2D_utklu")
