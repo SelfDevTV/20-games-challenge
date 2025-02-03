@@ -40,11 +40,6 @@ position = Vector2(0, 325)
 texture = ExtResource("1_x3ib8")
 centered = false
 
-[node name="PointLight2D" type="PointLight2D" parent="City"]
-position = Vector2(230, 232)
-color = Color(1, 0.13, 0.13, 1)
-texture = ExtResource("1_x3ib8")
-
 [node name="Hills" type="Parallax2D" parent="."]
 scroll_offset = Vector2(0, 5)
 repeat_size = Vector2(288, 0)

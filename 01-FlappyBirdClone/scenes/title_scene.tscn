@@ -1,35 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d27fuayayh4bd"]
+[gd_scene load_steps=8 format=3 uid="uid://d27fuayayh4bd"]
 
 [ext_resource type="Script" path="res://scripts/TitleScene.cs" id="1_7esro"]
 [ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="2_w0jux"]
-
-[sub_resource type="Animation" id="Animation_or6u6"]
-resource_name = "fade_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Button:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(96, 240.5), Vector2(96, 240.5), Vector2(96, -30)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/Bird:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(140, 200), Vector2(140, -15)]
-}
+[ext_resource type="PackedScene" uid="uid://e3spsarobop7" path="res://scenes/world.tscn" id="3_431hi"]
 
 [sub_resource type="Animation" id="Animation_vjx2q"]
 length = 0.5
@@ -62,6 +35,34 @@ tracks/0/keys = {
 "values": [Vector2(140, 200), Vector2(140, 150)]
 }
 
+[sub_resource type="Animation" id="Animation_or6u6"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(96, 240.5), Vector2(96, 240.5), Vector2(96, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Bird:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(140, 200), Vector2(140, -15)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vxiw1"]
 _data = {
 "RESET": SubResource("Animation_vjx2q"),
@@ -81,12 +82,6 @@ offset_right = 288.0
 offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 0
-offset_right = 317.0
-offset_bottom = 529.0
-color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="Control"]
 unique_name_in_owner = true
@@ -114,3 +109,5 @@ libraries = {
 "": SubResource("AnimationLibrary_vxiw1")
 }
 autoplay = "bird_float"
+
+[node name="World" parent="." instance=ExtResource("3_431hi")]
