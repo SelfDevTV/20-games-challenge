@@ -18,6 +18,16 @@ public partial class PlayScene : Node2D
 		world.Scored += OnScored;
 		ui = GetNode<Ui>("Ui");
 		ScoredSound = GetNode<AudioStreamPlayer2D>("ScoredSound");
+		// GetTree().Paused = TransitionManager.Instance.isTransitioning;
+
+		TransitionManager.Instance.TransitionComplete += StartGame;
+
+
+	}
+
+
+	public void StartGame()
+	{
 
 
 	}
@@ -25,7 +35,7 @@ public partial class PlayScene : Node2D
 	public void OnGameOver()
 	{
 
-		GetTree().CallDeferred("change_scene_to_file", "res://scenes/title_scene.tscn");
+		TransitionManager.Instance.LoadScene("res://scenes/title_scene.tscn");
 
 	}
 

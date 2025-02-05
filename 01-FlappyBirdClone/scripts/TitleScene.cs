@@ -17,7 +17,8 @@ public partial class TitleScene : Node2D
 	public void OnButtonPressed()
 	{
 
-		animationPlayer.Play("fade_out");
+		// animationPlayer.Play("fade_out");
+		TransitionManager.Instance.LoadScene("res://scenes/play_scene.tscn");
 
 
 	}
