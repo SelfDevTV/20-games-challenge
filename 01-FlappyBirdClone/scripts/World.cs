@@ -45,14 +45,18 @@ public partial class World : Node2D
 			Bird b = body as Bird;
 			b.dead = true;
 
+
+
 			foreach (Node layer in ParallaxLayers)
 			{
 				if (layer is Parallax2D)
 				{
 
 					Parallax2D p = layer as Parallax2D;
-					p.ProcessMode = ProcessModeEnum.Disabled;
-					p.SetDeferred("process_mode", 4);
+					Vector2 pos = p.Position;
+					p.Autoscroll = Vector2.Zero;
+					p.Position = pos;
+
 				}
 
 			}
