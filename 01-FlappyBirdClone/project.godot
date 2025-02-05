@@ -21,7 +21,8 @@ window/size/viewport_width=288
 window/size/viewport_height=512
 window/size/window_width_override=360
 window/size/window_height_override=640
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_width"
 
 [dotnet]
 

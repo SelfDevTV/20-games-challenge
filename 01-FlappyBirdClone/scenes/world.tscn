@@ -1,17 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://e3spsarobop7"]
+[gd_scene load_steps=7 format=3 uid="uid://e3spsarobop7"]
 
 [ext_resource type="Script" path="res://scripts/World.cs" id="1_cf50q"]
 [ext_resource type="Texture2D" uid="uid://ed2xkghkw22q" path="res://assets/art/floor.png" id="1_euw8k"]
 [ext_resource type="Texture2D" uid="uid://do5ed4eevnvqv" path="res://assets/art/clouds.png" id="1_x3ib8"]
 [ext_resource type="Texture2D" uid="uid://c2dmms22p7sxm" path="res://assets/art/hills.png" id="2_m0go0"]
-[ext_resource type="PackedScene" uid="uid://vm12vpurw6yq" path="res://scenes/pipe_pair.tscn" id="2_udoam"]
 [ext_resource type="Texture2D" uid="uid://bb4hwglpkg244" path="res://assets/art/clouds-top.png" id="4_j1wso"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_utklu"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_cf50q")
-PipePairScene = ExtResource("2_udoam")
 
 [node name="Clouds1" type="Parallax2D" parent="."]
 repeat_size = Vector2(288, 0)

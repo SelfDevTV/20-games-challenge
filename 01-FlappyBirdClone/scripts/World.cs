@@ -21,6 +21,10 @@ public partial class World : Node2D
 
 	public void SpawnPipePair()
 	{
+		if (PipePairScene == null)
+		{
+			return;
+		}
 		PipePair pipePair = PipePairScene.Instantiate<PipePair>();
 		AddChild(pipePair);
 		pipePair.Position = new Vector2(GetNode<Marker2D>("PipeSpawnPoint").Position.X, pipePair.Position.Y);
