@@ -102,6 +102,7 @@ text = "Start Game"
 [node name="Bird" parent="Control" instance=ExtResource("2_w0jux")]
 position = Vector2(140, 200)
 IsFloating = true
+dead = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

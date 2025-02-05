@@ -8,12 +8,17 @@ public partial class World : Node2D
 
 	[Export] public PackedScene PipePairScene;
 
+	Godot.Collections.Array<Node> ParallaxLayers = new Godot.Collections.Array<Node>();
+
 	Timer PipeTimer;
+
+	private Vector2 _markedScroll = Vector2.Zero;
 
 	public override void _Ready()
 	{
 		Area2D ground = GetNode<Area2D>("%HitArea");
 		ground.BodyEntered += OnGroundBodyEntered;
+		ParallaxLayers = GetChildren();
 
 		PipeTimer = GetNode<Timer>("%PipeTimer");
 		PipeTimer.Timeout += SpawnPipePair;
@@ -37,8 +42,32 @@ public partial class World : Node2D
 	{
 		if (body is Bird)
 		{
-			EmitSignal(SignalName.GameOver);
-			GD.Print("Game Over");
+			Bird b = body as Bird;
+			b.dead = true;
+
+			foreach (Node layer in ParallaxLayers)
+			{
+				if (layer is Parallax2D)
+				{
+
+					Parallax2D p = layer as Parallax2D;
+
+					p.Autoscroll = Vector2.Zero;
+
+				}
+			}
+			EndGame();
+
+
 		}
+	}
+
+	async void EndGame()
+	{
+
+		await ToSignal(GetTree().CreateTimer(1), "timeout");
+		EmitSignal(SignalName.GameOver);
+		GD.Print("Game Over");
+
 	}
 }
