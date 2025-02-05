@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgda37d41skn2"]
+[gd_scene load_steps=10 format=3 uid="uid://dgda37d41skn2"]
 
 [ext_resource type="Script" path="res://scripts/Bird.cs" id="1_d83jm"]
 [ext_resource type="Texture2D" uid="uid://bq7qtbay56mti" path="res://assets/art/bird.png" id="1_psamw"]
+[ext_resource type="AudioStream" uid="uid://bclyk30ac6cmn" path="res://assets/sfx/jump.wav" id="3_v7uri"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q050w"]
 atlas = ExtResource("1_psamw")
@@ -47,7 +48,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fc7u"]
 radius = 5.0
 
-[node name="Bird" type="CharacterBody2D"]
+[node name="Bird" type="CharacterBody2D" groups=["bird"]]
 scale = Vector2(1.5, 1.5)
 motion_mode = 1
 script = ExtResource("1_d83jm")
@@ -60,3 +61,7 @@ frame_progress = 0.238562
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2fc7u")
+
+[node name="FlapSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v7uri")
+volume_db = -5.0

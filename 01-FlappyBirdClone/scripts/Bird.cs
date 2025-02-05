@@ -11,14 +11,16 @@ public partial class Bird : CharacterBody2D
 	[Export]
 	public bool dead = false;
 
+	AudioStreamPlayer2D FlapSound;
+
+	public override void _Ready()
+	{
+		FlapSound = GetNode<AudioStreamPlayer2D>("FlapSound");
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
-		if (dead)
-		{
 
-			Velocity = new();
-			return;
-		}
 		Vector2 velocity = Velocity;
 
 		if (!IsFloating)
@@ -26,18 +28,19 @@ public partial class Bird : CharacterBody2D
 
 
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && !IsFloating)
+		if (Input.IsActionJustPressed("ui_accept") && !IsFloating && !dead)
 		{
 			velocity.Y = JumpVelocity;
+			FlapSound.Play();
 		}
 
 		// Rotate the bird.
-		if (velocity.Y < 0)
+		if (velocity.Y < 0 && !IsFloating)
 		{
 			float newRotation = Rotation - Mathf.DegToRad(rotationSpeed * (float)delta);
 			Rotation = Mathf.Max(newRotation, Mathf.DegToRad(-45));
 		}
-		else
+		else if (velocity.Y > 0 && !IsFloating)
 		{
 			float newRotation = Rotation + Mathf.DegToRad(rotationSpeed * (float)delta);
 			Rotation = Mathf.Min(newRotation, Mathf.DegToRad(45));

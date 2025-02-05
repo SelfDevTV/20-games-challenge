@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0audnr54o48e"]
+[gd_scene load_steps=7 format=3 uid="uid://d0audnr54o48e"]
 
 [ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="1_187mi"]
 [ext_resource type="Script" path="res://scripts/PlayScene.cs" id="1_hiu8r"]
 [ext_resource type="PackedScene" uid="uid://e3spsarobop7" path="res://scenes/world.tscn" id="2_s6pdg"]
 [ext_resource type="PackedScene" uid="uid://vm12vpurw6yq" path="res://scenes/pipe_pair.tscn" id="3_wrm55"]
 [ext_resource type="PackedScene" uid="uid://dm5fsn5o2gsld" path="res://scenes/ui.tscn" id="5_asq42"]
+[ext_resource type="AudioStream" uid="uid://ccym201fgev38" path="res://assets/sfx/pickupCoin.wav" id="6_5yq6w"]
 
 [node name="PlayScene" type="Node2D"]
 script = ExtResource("1_hiu8r")
@@ -16,3 +17,7 @@ PipePairScene = ExtResource("3_wrm55")
 position = Vector2(59, 263)
 
 [node name="Ui" parent="." instance=ExtResource("5_asq42")]
+
+[node name="ScoredSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5yq6w")
+volume_db = 20.0

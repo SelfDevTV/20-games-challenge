@@ -8,24 +8,32 @@ public partial class PlayScene : Node2D
 	Ui ui;
 	int score = 0;
 
+	AudioStreamPlayer2D ScoredSound;
+	AudioStreamPlayer2D GameOverSound;
+
 	public override void _Ready()
 	{
 		World world = GetNode<World>("World");
 		world.GameOver += OnGameOver;
 		world.Scored += OnScored;
 		ui = GetNode<Ui>("Ui");
+		ScoredSound = GetNode<AudioStreamPlayer2D>("ScoredSound");
+
 
 	}
 
 	public void OnGameOver()
 	{
+
 		GetTree().CallDeferred("change_scene_to_file", "res://scenes/title_scene.tscn");
+
 	}
 
 	public void OnScored()
 	{
 		score++;
 		ui.SetScore(score);
+		ScoredSound.Play();
 	}
 
 

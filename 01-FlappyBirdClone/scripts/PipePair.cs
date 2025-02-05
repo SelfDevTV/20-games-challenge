@@ -3,33 +3,42 @@ using System;
 
 public partial class PipePair : Node2D
 {
-	
+
 	const float PIPE_GAP_MAX = 80;
 	const float PIPE_GAP_MIN = 60;
 	const float SCREEN_HEIGHT = 512;
 
+	private float _scrollSpeed = 100;
+
 	[Signal] public delegate void GameOverEventHandler();
 	[Signal] public delegate void ScoredEventHandler();
 
+	[Signal] public delegate void RemovePipePairEventHandler();
 
 
-    // TODO: Randomize the gap between the pipes
-    // TODO: Randomize the height of the gap
 
-    public override void _Ready()
-    {
-        RandomizePipeGap();
+	// TODO: Randomize the gap between the pipes
+	// TODO: Randomize the height of the gap
+
+	public override void _Ready()
+	{
+		RandomizePipeGap();
 		GetNode<Area2D>("Top").BodyEntered += OnPipePairBodyEntered;
 		GetNode<Area2D>("Bot").BodyEntered += OnPipePairBodyEntered;
 		GetNode<Area2D>("Gap").BodyEntered += OnGapBodyEntered;
 
-		GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D").ScreenExited += () => {
-			QueueFree();
-			GD.Print("Freed pipe");
+		GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D").ScreenExited += () =>
+		{
+			EmitSignal(SignalName.RemovePipePair);
 		};
 
 
-    }
+	}
+
+	public void Stop()
+	{
+		_scrollSpeed = 0;
+	}
 
 	public void OnGapBodyEntered(Node body)
 	{
@@ -39,10 +48,10 @@ public partial class PipePair : Node2D
 		}
 	}
 
-    public override void _Process(double delta)
-    {
-        Position += Vector2.Left * 100 * (float)delta;
-    }
+	public override void _Process(double delta)
+	{
+		Position += Vector2.Left * _scrollSpeed * (float)delta;
+	}
 
 	public void OnPipePairBodyEntered(Node body)
 	{
@@ -52,7 +61,7 @@ public partial class PipePair : Node2D
 		}
 	}
 
-    public void RandomizePipeGap()
+	public void RandomizePipeGap()
 	{
 		float halfScreen = SCREEN_HEIGHT / 2;
 		float randY = (float)GD.RandRange(halfScreen - PIPE_GAP_MAX, halfScreen + PIPE_GAP_MAX);
@@ -64,7 +73,7 @@ public partial class PipePair : Node2D
 
 	}
 
-	
+
 
 
 }
