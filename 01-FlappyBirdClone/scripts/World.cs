@@ -51,14 +51,12 @@ public partial class World : Node2D
 				{
 
 					Parallax2D p = layer as Parallax2D;
-
-					p.Autoscroll = Vector2.Zero;
-
+					p.ProcessMode = ProcessModeEnum.Disabled;
+					p.SetDeferred("process_mode", 4);
 				}
+
 			}
 			EndGame();
-
-
 		}
 	}
 
