@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d27fuayayh4bd"]
+[gd_scene load_steps=9 format=3 uid="uid://d27fuayayh4bd"]
 
 [ext_resource type="Script" path="res://scripts/TitleScene.cs" id="1_7esro"]
 [ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="2_w0jux"]
 [ext_resource type="PackedScene" uid="uid://e3spsarobop7" path="res://scenes/world.tscn" id="3_431hi"]
+[ext_resource type="AudioStream" uid="uid://c5mvkrgc3kupv" path="res://assets/sfx/menu_song.mp3" id="4_otof8"]
 
 [sub_resource type="Animation" id="Animation_vjx2q"]
 length = 0.5
@@ -112,3 +113,8 @@ libraries = {
 autoplay = "bird_float"
 
 [node name="World" parent="." instance=ExtResource("3_431hi")]
+
+[node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_otof8")
+volume_db = 10.0
+autoplay = true

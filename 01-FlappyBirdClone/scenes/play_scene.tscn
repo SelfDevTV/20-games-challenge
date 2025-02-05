@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0audnr54o48e"]
+[gd_scene load_steps=8 format=3 uid="uid://d0audnr54o48e"]
 
 [ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="1_187mi"]
 [ext_resource type="Script" path="res://scripts/PlayScene.cs" id="1_hiu8r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vm12vpurw6yq" path="res://scenes/pipe_pair.tscn" id="3_wrm55"]
 [ext_resource type="PackedScene" uid="uid://dm5fsn5o2gsld" path="res://scenes/ui.tscn" id="5_asq42"]
 [ext_resource type="AudioStream" uid="uid://ccym201fgev38" path="res://assets/sfx/pickupCoin.wav" id="6_5yq6w"]
+[ext_resource type="AudioStream" uid="uid://bp42qyycwv6x4" path="res://assets/sfx/title_flappy_bird.mp3" id="7_va43r"]
 
 [node name="PlayScene" type="Node2D"]
 script = ExtResource("1_hiu8r")
@@ -21,3 +22,8 @@ position = Vector2(59, 263)
 [node name="ScoredSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_5yq6w")
 volume_db = 20.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_va43r")
+volume_db = 10.0
+autoplay = true
