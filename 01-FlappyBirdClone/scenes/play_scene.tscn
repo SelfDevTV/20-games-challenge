@@ -15,7 +15,7 @@ script = ExtResource("1_hiu8r")
 PipePairScene = ExtResource("3_wrm55")
 
 [node name="Bird" parent="." instance=ExtResource("1_187mi")]
-position = Vector2(59, 263)
+position = Vector2(90, 263)
 
 [node name="Ui" parent="." instance=ExtResource("5_asq42")]
 

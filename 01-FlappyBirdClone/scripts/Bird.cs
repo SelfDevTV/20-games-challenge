@@ -8,6 +8,8 @@ public partial class Bird : CharacterBody2D
 	public const float JumpVelocity = -250.0f;
 	public const float rotationSpeed = 200f;
 
+	public GpuParticles2D particles;
+
 	[Export]
 	public bool dead = false;
 
@@ -16,6 +18,10 @@ public partial class Bird : CharacterBody2D
 	public override void _Ready()
 	{
 		FlapSound = GetNode<AudioStreamPlayer2D>("FlapSound");
+		particles = GetNode<GpuParticles2D>("FlapParticles");
+
+		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		sprite.AnimationChanged += () => particles.Emitting = true;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -32,6 +38,7 @@ public partial class Bird : CharacterBody2D
 		{
 			velocity.Y = JumpVelocity;
 			FlapSound.Play();
+			particles.Restart();
 		}
 
 		// Rotate the bird.

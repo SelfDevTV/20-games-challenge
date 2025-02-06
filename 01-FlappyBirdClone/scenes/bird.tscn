@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgda37d41skn2"]
+[gd_scene load_steps=11 format=3 uid="uid://dgda37d41skn2"]
 
 [ext_resource type="Script" path="res://scripts/Bird.cs" id="1_d83jm"]
 [ext_resource type="Texture2D" uid="uid://bq7qtbay56mti" path="res://assets/art/bird.png" id="1_psamw"]
 [ext_resource type="AudioStream" uid="uid://bclyk30ac6cmn" path="res://assets/sfx/jump.wav" id="3_v7uri"]
+[ext_resource type="PackedScene" uid="uid://cyixt75coud8o" path="res://scenes/flap_particles.tscn" id="4_ldjwm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q050w"]
 atlas = ExtResource("1_psamw")
@@ -65,3 +66,6 @@ shape = SubResource("CircleShape2D_2fc7u")
 [node name="FlapSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_v7uri")
 volume_db = -5.0
+
+[node name="FlapParticles" parent="." instance=ExtResource("4_ldjwm")]
+position = Vector2(8, 0)
