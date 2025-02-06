@@ -105,6 +105,15 @@ position = Vector2(140, 200)
 IsFloating = true
 dead = true
 
+[node name="HighestScoreLbl" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 21.0
+offset_right = 145.0
+offset_bottom = 44.0
+text = "Highest Score: 0"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
