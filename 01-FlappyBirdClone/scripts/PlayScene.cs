@@ -13,10 +13,12 @@ public partial class PlayScene : Node2D
 
 	public override void _Ready()
 	{
+		int highScore = SaveSystem.Load();
 		World world = GetNode<World>("World");
 		world.GameOver += OnGameOver;
 		world.Scored += OnScored;
 		ui = GetNode<Ui>("Ui");
+		ui.SetMaxScore(highScore);
 		ScoredSound = GetNode<AudioStreamPlayer2D>("ScoredSound");
 		// GetTree().Paused = TransitionManager.Instance.isTransitioning;
 
@@ -34,7 +36,12 @@ public partial class PlayScene : Node2D
 
 	public void OnGameOver()
 	{
-
+		int highScore = SaveSystem.Load();
+		GD.Print(highScore);
+		if (score > highScore)
+		{
+			SaveSystem.Save(score);
+		}
 		TransitionManager.Instance.LoadScene("res://scenes/title_scene.tscn");
 
 	}

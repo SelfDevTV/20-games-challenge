@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://d27fuayayh4bd"]
+[gd_scene load_steps=11 format=3 uid="uid://d27fuayayh4bd"]
 
 [ext_resource type="Script" path="res://scripts/TitleScene.cs" id="1_7esro"]
 [ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="2_w0jux"]
+[ext_resource type="FontFile" uid="uid://biskckxmvohof" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_7i75u"]
 [ext_resource type="PackedScene" uid="uid://e3spsarobop7" path="res://scenes/world.tscn" id="3_431hi"]
 [ext_resource type="AudioStream" uid="uid://c5mvkrgc3kupv" path="res://assets/sfx/menu_song.mp3" id="4_otof8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpclv"]
+font = ExtResource("3_7i75u")
+font_size = 24
 
 [sub_resource type="Animation" id="Animation_vjx2q"]
 length = 0.5
@@ -92,12 +97,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
+offset_left = -51.5
 offset_top = -15.5
-offset_right = 48.0
+offset_right = 51.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_7i75u")
 text = "Start Game"
 
 [node name="Bird" parent="Control" instance=ExtResource("2_w0jux")]
@@ -113,6 +119,7 @@ offset_top = 21.0
 offset_right = 145.0
 offset_bottom = 44.0
 text = "Highest Score: 0"
+label_settings = SubResource("LabelSettings_jpclv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

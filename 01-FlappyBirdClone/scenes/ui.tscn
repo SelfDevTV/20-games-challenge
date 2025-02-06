@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm5fsn5o2gsld"]
+[gd_scene load_steps=5 format=3 uid="uid://dm5fsn5o2gsld"]
 
 [ext_resource type="Script" path="res://scripts/Ui.cs" id="1_4n3vr"]
+[ext_resource type="FontFile" uid="uid://biskckxmvohof" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_j1l7x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3o75p"]
+font = ExtResource("2_j1l7x")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbwyr"]
+font = ExtResource("2_j1l7x")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="Ui" type="Control"]
 z_index = 10
@@ -12,13 +25,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4n3vr")
 
-[node name="Label" type="Label" parent="."]
+[node name="Score" type="Label" parent="."]
 layout_mode = 1
 offset_left = 19.0
 offset_top = 18.0
-offset_right = 59.0
+offset_right = 81.0
 offset_bottom = 41.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 3
 text = "Score: 0"
+label_settings = SubResource("LabelSettings_3o75p")
+
+[node name="HighestScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 44.0
+offset_right = 147.0
+offset_bottom = 67.0
+text = "Highest Score: 0"
+label_settings = SubResource("LabelSettings_hbwyr")
