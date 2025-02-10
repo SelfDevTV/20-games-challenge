@@ -30,6 +30,7 @@ color_ramp = SubResource("GradientTexture1D_p3fy6")
 hue_variation_curve = SubResource("CurveTexture_ij3ei")
 
 [node name="FlapParticles" type="GPUParticles2D"]
+process_mode = 1
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_3bsfg")

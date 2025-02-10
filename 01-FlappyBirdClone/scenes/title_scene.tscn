@@ -1,10 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://d27fuayayh4bd"]
+[gd_scene load_steps=13 format=3 uid="uid://d27fuayayh4bd"]
 
 [ext_resource type="Script" path="res://scripts/TitleScene.cs" id="1_7esro"]
+[ext_resource type="Texture2D" uid="uid://du2i53p8kunc6" path="res://assets/art/ui.png" id="2_1qn44"]
 [ext_resource type="PackedScene" uid="uid://dgda37d41skn2" path="res://scenes/bird.tscn" id="2_w0jux"]
 [ext_resource type="FontFile" uid="uid://biskckxmvohof" path="res://assets/fonts/PixelifySans-Regular.ttf" id="3_7i75u"]
 [ext_resource type="PackedScene" uid="uid://e3spsarobop7" path="res://scenes/world.tscn" id="3_431hi"]
 [ext_resource type="AudioStream" uid="uid://c5mvkrgc3kupv" path="res://assets/sfx/menu_song.mp3" id="4_otof8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlibo"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_jpclv"]
 font = ExtResource("3_7i75u")
@@ -38,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(140, 200), Vector2(140, 150)]
+"values": [Vector2(140, 130), Vector2(140, 70)]
 }
 
 [sub_resource type="Animation" id="Animation_or6u6"]
@@ -47,7 +55,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Button:position")
+tracks/0/path = NodePath("Control/Start Game:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +97,16 @@ offset_bottom = 512.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Control"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 62.0
+offset_right = 283.0
+offset_bottom = 334.0
+texture = ExtResource("2_1qn44")
+region_rect = Rect2(0, 0, 40, 40)
+
+[node name="Start Game" type="Button" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -98,13 +115,34 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -51.5
-offset_top = -15.5
+offset_top = -105.5
 offset_right = 51.5
-offset_bottom = 15.5
+offset_bottom = -74.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_7i75u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wlibo")
 text = "Start Game"
+
+[node name="Close Game" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -59.0
+offset_right = 51.5
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_7i75u")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wlibo")
+text = "Close"
 
 [node name="Bird" parent="Control" instance=ExtResource("2_w0jux")]
 position = Vector2(140, 200)
@@ -113,11 +151,15 @@ dead = true
 
 [node name="HighestScoreLbl" type="Label" parent="Control"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 21.0
-offset_top = 21.0
-offset_right = 145.0
-offset_bottom = 44.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 25.0
+offset_right = 94.0
+offset_bottom = 55.0
+grow_horizontal = 2
 text = "Highest Score: 0"
 label_settings = SubResource("LabelSettings_jpclv")
 

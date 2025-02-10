@@ -14,7 +14,9 @@ public partial class TitleScene : Node2D
 		highestScore = SaveSystem.Load();
 		highScoreLabel = GetNode<Label>("%HighestScoreLbl");
 		highScoreLabel.Text = "Highest Score: " + highestScore.ToString();
-		Button btn = GetNode<Button>("%Button");
+		Button btn = GetNode<Button>("%Start Game");
+		Button closeBtn = GetNode<Button>("%Close Game");
+		closeBtn.Pressed += () => GetTree().Quit();
 		btn.Pressed += OnButtonPressed;
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationPlayer.AnimationFinished += OnFadeFinished;

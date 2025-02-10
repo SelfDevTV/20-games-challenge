@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm5fsn5o2gsld"]
+[gd_scene load_steps=11 format=3 uid="uid://dm5fsn5o2gsld"]
 
 [ext_resource type="Script" path="res://scripts/Ui.cs" id="1_4n3vr"]
 [ext_resource type="FontFile" uid="uid://biskckxmvohof" path="res://assets/fonts/PixelifySans-Regular.ttf" id="2_j1l7x"]
+[ext_resource type="Texture2D" uid="uid://du2i53p8kunc6" path="res://assets/art/ui.png" id="3_cbk6w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3o75p"]
 font = ExtResource("2_j1l7x")
@@ -15,7 +16,65 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kwqbu"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_7q7xn"]
+resource_name = "slide_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, -234), Vector2(16, 109)]
+}
+
+[sub_resource type="Animation" id="Animation_psnpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, -234)]
+}
+
+[sub_resource type="Animation" id="Animation_cl2cm"]
+resource_name = "slide_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 109), Vector2(16, -234)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e4pf5"]
+_data = {
+"RESET": SubResource("Animation_psnpg"),
+"slide_in": SubResource("Animation_7q7xn"),
+"slide_out": SubResource("Animation_cl2cm")
+}
+
 [node name="Ui" type="Control"]
+process_mode = 3
 z_index = 10
 layout_mode = 3
 anchors_preset = 15
@@ -45,3 +104,57 @@ offset_right = 147.0
 offset_bottom = 67.0
 text = "Highest Score: 0"
 label_settings = SubResource("LabelSettings_hbwyr")
+
+[node name="PauseMenu" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -490.0
+offset_right = 128.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cbk6w")
+
+[node name="BackBtn" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -42.0
+offset_right = 57.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwqbu")
+text = "Back to Menu"
+
+[node name="CloseBtn" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -2.5
+offset_right = 57.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_kwqbu")
+text = "Close Game"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e4pf5")
+}
